@@ -1,9 +1,7 @@
-FROM tomcat:10.1-jdk17
+FROM payara/micro:6.2025.11-jdk17
 
-RUN rm -rf /usr/local/tomcat/webapps/*
+# Copia el archivo WAR correcto con el nombre del repositorio
+COPY SoemOficial_Teriminadisimo.war /opt/payara/deployments/ROOT.war
 
-COPY SoemOficial_Teriminadisimo.war /usr/local/tomcat/webapps/ROOT.war
-
-EXPOSE 8080
-
-CMD ["catalina.sh", "run"]
+# Pasa la variable PORT de Railway a Payara Micro al arrancar
+CMD ["sh", "-c", "java -jar /opt/payara/payara-micro.jar --deploy /opt/payara/deployments/ROOT.war --port ${PORT:-8080}"]
