@@ -6,7 +6,7 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 
 # Copia el WAR ya compilado (está en la raíz del repo) y lo descomprime como carpeta ROOT
 # (para poder agregarle un jar que le falta antes de que Tomcat lo despliegue)
-COPY SoemOficial_Terminadisimo.war /usr/local/tomcat/webapps/ROOT.war
+COPY SoemOficial_Teriminadisimo.war /usr/local/tomcat/webapps/ROOT.war
 RUN mkdir -p /usr/local/tomcat/webapps/ROOT \
     && cd /usr/local/tomcat/webapps/ROOT \
     && jar -xf ../ROOT.war \
